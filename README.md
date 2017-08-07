@@ -2,6 +2,7 @@
 
 publishes an mqtt message when a button is pushed
 
+```
 docker run -it \
 -e MQTT_HOST=localhost \
 -e MQTT_PORT=1883 \
@@ -15,3 +16,4 @@ docker run -it \
 --device /dev/mem:/dev/mem \
 --net host \
 jonaseck/rpi-button-mqtt
+```
