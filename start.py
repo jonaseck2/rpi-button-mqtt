@@ -35,7 +35,7 @@ def cleanup():
     print("cleanup")
     mqtt_client.loop_stop()
     mqtt_client.disconnect()
-    GPIO.cleanup()
+    GPIO.cleanup(config['button']['channel'])
 
 def button_callback(channel):
     mqtt_send('push')
@@ -60,4 +60,4 @@ try:
     print("Starting main loop...")
     mqtt_client.loop_forever()
 finally:
-    cleanup(config['button']['channel'])
+    cleanup()
