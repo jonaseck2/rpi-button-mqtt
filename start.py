@@ -9,7 +9,7 @@ import time
 # Default configuration
 config = {
     'mqtt': {
-        'broker': os.getenv('MQTT_HOST', 'localhost'),
+        'broker': os.getenv('MQTT_BROKER', 'localhost'),
         'port': int(os.getenv('MQTT_PORT', '1883')),
         'prefix': os.getenv('MQTT_PREFIX', 'media'),
         'topic': os.getenv('MQTT_TOPIC', 'button'),
