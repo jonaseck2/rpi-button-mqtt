@@ -48,7 +48,7 @@ try:
     if config['mqtt']['user']:
         mqtt_client.username_pw_set(config['mqtt']['user'], password=config['mqtt']['password']);
     mqtt_client.on_connect = mqtt_on_connect
-    mqtt_client.connect(config['mqtt']['broker'], config['mqtt']['port'], 60)
+    mqtt_client.connect_async(config['mqtt']['broker'], config['mqtt']['port'], 60)
 
     ### Setup GPIO ###
     print("Initializing GPIO...")
@@ -58,6 +58,6 @@ try:
     GPIO.add_event_detect(config['button']['channel'], GPIO.FALLING, callback=button_callback, bouncetime=config['button']['bouncetime'])
 
     print("Starting main loop...")
-    mqtt_client.loop_forever()
+    mqtt_client.loop_forever(retry_first_connection=True)
 finally:
     cleanup()
